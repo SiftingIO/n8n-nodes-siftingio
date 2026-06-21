@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-siftingio.siftingIo",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Finance & Accounting", "Data & Storage"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://sifting.io/docs"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://sifting.io/docs"
+			}
+		]
+	}
+}

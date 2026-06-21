@@ -1,0 +1,65 @@
+{
+  "name": "n8n-nodes-siftingio",
+  "version": "0.1.0",
+  "description": "n8n community node for the SiftingIO financial-data API (SEC filings, XBRL financials, economic calendar, market hours, historical OHLCV, live quotes, currency conversion, DEX wallets).",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "siftingio",
+    "sifting",
+    "finance",
+    "sec",
+    "edgar",
+    "xbrl",
+    "stocks",
+    "crypto",
+    "forex"
+  ],
+  "license": "MIT",
+  "homepage": "https://sifting.io",
+  "author": {
+    "name": "SiftingIO",
+    "email": "info@sifting.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SiftingIO/n8n-nodes-siftingio.git"
+  },
+  "engines": {
+    "node": ">=20.15"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "npx rimraf dist && tsc && gulp build:assets",
+    "dev": "tsc --watch",
+    "format": "prettier nodes credentials --write",
+    "lint": "eslint nodes credentials package.json",
+    "lintfix": "eslint nodes credentials package.json --fix",
+    "prepublishOnly": "npm run build && npm run lint"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/SiftingIoApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/SiftingIo/SiftingIo.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-n8n-nodes-base": "^1.16.3",
+    "gulp": "^5.0.0",
+    "n8n-workflow": "2.16.0",
+    "prettier": "^3.3.3",
+    "rimraf": "^5.0.10",
+    "typescript": "^5.6.3"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "2.16.0"
+  }
+}

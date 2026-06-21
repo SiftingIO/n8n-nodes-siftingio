@@ -1,0 +1,107 @@
+import type { INodeProperties } from 'n8n-workflow';
+import { simpleLimitField, splitArray } from '../shared';
+
+export const economicCalendarOperations: INodeProperties[] = [
+	{
+		displayName: 'Operation',
+		name: 'operation',
+		type: 'options',
+		noDataExpression: true,
+		displayOptions: { show: { resource: ['economicCalendar'] } },
+		options: [
+			{
+				name: 'List Events',
+				value: 'list',
+				action: 'List upcoming economic events',
+				description: 'Upcoming US economic releases (CPI, NFP, FOMC, GDP, …) from official calendars',
+				routing: {
+					request: { method: 'GET', url: '=/v1/fnd/economic-calendar' },
+					output: splitArray('events'),
+				},
+			},
+		],
+		default: 'list',
+	},
+];
+
+export const economicCalendarFields: INodeProperties[] = [
+	{
+		displayName: 'From',
+		name: 'from',
+		type: 'string',
+		default: '',
+		placeholder: '2026-06-01',
+		description: 'Inclusive lower bound on scheduled_at (YYYY-MM-DD or RFC3339). Defaults to now.',
+		displayOptions: { show: { resource: ['economicCalendar'], operation: ['list'] } },
+		routing: { send: { type: 'query', property: 'from' } },
+	},
+	{
+		displayName: 'To',
+		name: 'to',
+		type: 'string',
+		default: '',
+		placeholder: '2026-12-31',
+		description: 'Exclusive upper bound on scheduled_at. Defaults to From + 30 days (max range 365 days).',
+		displayOptions: { show: { resource: ['economicCalendar'], operation: ['list'] } },
+		routing: { send: { type: 'query', property: 'to' } },
+	},
+	{
+		displayName: 'Country',
+		name: 'country',
+		type: 'string',
+		default: '',
+		placeholder: 'US',
+		description: 'ISO 3166-1 alpha-2 country code. Defaults to US.',
+		displayOptions: { show: { resource: ['economicCalendar'], operation: ['list'] } },
+		routing: { send: { type: 'query', property: 'country' } },
+	},
+	{
+		displayName: 'Impact',
+		name: 'impact',
+		type: 'options',
+		default: '',
+		description: 'Filter by relative market-impact tier',
+		displayOptions: { show: { resource: ['economicCalendar'], operation: ['list'] } },
+		options: [
+			{ name: 'Any', value: '' },
+			{ name: 'Low', value: 'low' },
+			{ name: 'Medium', value: 'medium' },
+			{ name: 'High', value: 'high' },
+		],
+		routing: { send: { type: 'query', property: 'impact' } },
+	},
+	{
+		displayName: 'Agency',
+		name: 'agency',
+		type: 'options',
+		default: '',
+		description: 'Filter by issuing agency',
+		displayOptions: { show: { resource: ['economicCalendar'], operation: ['list'] } },
+		options: [
+			{ name: 'Any', value: '' },
+			{ name: 'BEA', value: 'BEA' },
+			{ name: 'BLS', value: 'BLS' },
+			{ name: 'Census', value: 'Census' },
+			{ name: 'Conference Board', value: 'ConferenceBoard' },
+			{ name: 'DOL', value: 'DOL' },
+			{ name: 'EIA', value: 'EIA' },
+			{ name: 'Fed', value: 'Fed' },
+			{ name: 'ISM', value: 'ISM' },
+			{ name: 'NAR', value: 'NAR' },
+			{ name: 'Treasury', value: 'Treasury' },
+			{ name: 'UMich', value: 'UMich' },
+		],
+		routing: { send: { type: 'query', property: 'agency' } },
+	},
+	{
+		displayName: 'Event ID',
+		name: 'event_id',
+		type: 'string',
+		default: '',
+		placeholder: 'us_cpi',
+		description: 'Recurring event identifier, e.g. us_cpi, us_nfp, us_fomc_decision',
+		displayOptions: { show: { resource: ['economicCalendar'], operation: ['list'] } },
+		routing: { send: { type: 'query', property: 'event_id' } },
+	},
+	simpleLimitField('economicCalendar', 'list', 500, 100),
+];
