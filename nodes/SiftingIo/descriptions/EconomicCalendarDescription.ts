@@ -13,7 +13,8 @@ export const economicCalendarOperations: INodeProperties[] = [
 				name: 'List Events',
 				value: 'list',
 				action: 'List upcoming economic events',
-				description: 'Upcoming US economic releases (CPI, NFP, FOMC, GDP, …) from official calendars',
+				description:
+					'Upcoming US economic releases (CPI, NFP, FOMC, GDP, …) from official calendars',
 				routing: {
 					request: { method: 'GET', url: '=/v1/fnd/economic-calendar' },
 					output: splitArray('events'),
@@ -41,7 +42,8 @@ export const economicCalendarFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		placeholder: '2026-12-31',
-		description: 'Exclusive upper bound on scheduled_at. Defaults to From + 30 days (max range 365 days).',
+		description:
+			'Exclusive upper bound on scheduled_at. Defaults to From + 30 days (max range 365 days).',
 		displayOptions: { show: { resource: ['economicCalendar'], operation: ['list'] } },
 		routing: { send: { type: 'query', property: 'to' } },
 	},

@@ -23,7 +23,8 @@ export const discoveryOperations: INodeProperties[] = [
 				name: 'Get Company Profile',
 				value: 'getProfile',
 				action: 'Get a company profile',
-				description: 'Name, exchanges, SIC industry, fiscal year end and entity type for one issuer',
+				description:
+					'Name, exchanges, SIC industry, fiscal year end and entity type for one issuer',
 				routing: {
 					request: { method: 'GET', url: '=/v1/fnd/stocks/{{$parameter.ticker}}/profile' },
 				},

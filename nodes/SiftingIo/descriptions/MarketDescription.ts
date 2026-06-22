@@ -108,7 +108,8 @@ export const marketFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		placeholder: '2026-12-31',
-		description: 'Inclusive upper bound (YYYY-MM-DD). Defaults to From + 90 days (max range 730 days).',
+		description:
+			'Inclusive upper bound (YYYY-MM-DD). Defaults to From + 90 days (max range 730 days).',
 		displayOptions: { show: { resource: ['market'], operation: ['getCalendar'] } },
 		routing: { send: { type: 'query', property: 'to' } },
 	},

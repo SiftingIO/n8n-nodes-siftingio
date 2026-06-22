@@ -13,7 +13,8 @@ export const financialsOperations: INodeProperties[] = [
 				name: 'Get Full Bundle',
 				value: 'getBundle',
 				action: 'Get the full XBRL bundle',
-				description: 'Every reported XBRL concept for a company across every period (large payload)',
+				description:
+					'Every reported XBRL concept for a company across every period (large payload)',
 				routing: {
 					request: { method: 'GET', url: '=/v1/fnd/stocks/{{$parameter.ticker}}/financials' },
 				},

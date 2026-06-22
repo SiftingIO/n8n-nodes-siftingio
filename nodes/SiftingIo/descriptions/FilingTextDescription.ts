@@ -36,7 +36,8 @@ export const filingTextOperations: INodeProperties[] = [
 				name: 'Get Risk Factors Diff',
 				value: 'getRiskDiff',
 				action: 'Diff risk factors year over year',
-				description: "Paragraph-level diff of the latest 10-K's Risk Factors against the prior year",
+				description:
+					"Paragraph-level diff of the latest 10-K's Risk Factors against the prior year",
 				routing: {
 					request: {
 						method: 'GET',

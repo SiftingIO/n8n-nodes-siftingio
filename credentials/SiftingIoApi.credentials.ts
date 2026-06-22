@@ -28,7 +28,8 @@ export class SiftingIoApi implements ICredentialType {
 			name: 'baseUrl',
 			type: 'string',
 			default: 'https://api.sifting.io',
-			description: 'The SiftingIO API base URL. Change this only for staging or self-hosted deployments.',
+			description:
+				'The SiftingIO API base URL. Change this only for staging or self-hosted deployments.',
 		},
 	];
 
