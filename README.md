@@ -3,10 +3,9 @@
 This is an [n8n](https://n8n.io/) community node. It lets you use the
 [SiftingIO](https://sifting.io) financial-data API in your n8n workflows.
 
-SiftingIO is a single API for US capital-markets data: SEC filings and extracted
-filing text, standardized XBRL financials, an economic calendar, global market
-hours, historical OHLCV bars, live quotes/trades, currency conversion, and DEX
-wallet portfolios.
+SiftingIO is a market data API for financial applications, automation workflows, and AI agents. It provides real-time and historical data across stocks, forex, crypto, commodities, DEX datasets, fundamentals, market news, market hours, historical OHLCV bars, live quotes, and currency conversion.
+
+Official integration guide: https://sifting.io/integrations/n8n
 
 [Installation](#installation) · [Credentials](#credentials) · [Operations](#operations) · [Resources](#resources)
 
@@ -26,19 +25,18 @@ credential and paste the key. The credential sends it as the `X-API-Key` header.
 
 ## Operations
 
-The **SiftingIO** node groups operations by resource:
+The SiftingIO node groups operations by resource:
 
-- **Discovery** – ticker/company search, company profile.
-- **SEC Filing** – list filings, get one, 8-K material events, 13D/G ownership, DEF 14A proxy, earnings history.
-- **Filing Text** – extract all sections, extract one section, Risk Factors year-over-year diff.
-- **Financials (XBRL)** – full bundle, single concept, cross-sectional screener, fundamental ratios.
-- **Holdings** – insider (Form 3/4/5) transactions, 13F-HR institutional holdings.
-- **Economic Calendar** – upcoming US economic events (CPI, NFP, FOMC, …).
-- **Market** – list markets, open/closed status, weekly hours, holiday calendars.
-- **Historical** – OHLCV bars for stocks, forex, crypto, DEX, and commodities.
-- **Live** – last trade, top-of-book quote, full-venue snapshot, DEX TVL.
-- **Convert** – live FX/crypto currency conversion.
-- **DEX Wallet** – on-chain wallet portfolio.
+* Live – last trade, quote, snapshots, DEX TVL.
+* Historical – OHLCV bars for stocks, forex, crypto, DEX, and commodities.
+* Market – market status, trading hours, and holiday calendars.
+* Convert – live FX/crypto currency conversion.
+* Discovery – ticker/company search and company profiles.
+* Fundamentals – company financials, ratios, concepts, and screener workflows.
+* Filings – SEC filings, extracted sections, risk-factor diffs, proxy statements, and material events.
+* Holdings – insider transactions and institutional holdings.
+* Economic Calendar – upcoming US economic events.
+* DEX Wallet – on-chain wallet portfolio.
 
 The node is also usable as a **tool** for n8n AI Agents (`usableAsTool`).
 
@@ -80,8 +78,14 @@ are handled automatically (the node always sends `Accept-Encoding: gzip`).
 
 ## Resources
 
-- [SiftingIO API documentation](https://sifting.io/docs)
-- [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
+* [SiftingIO Website](https://sifting.io)
+* [SiftingIO API Documentation](https://sifting.io/docs)
+* [SiftingIO Integrations](https://sifting.io/integrations)
+* [n8n Integration Guide](https://sifting.io/integrations/n8n)
+* [Symbol Catalog](https://sifting.io/symbols)
+* [Market Hours](https://sifting.io/market-hours)
+* [Pricing](https://sifting.io/pricing)
+* [n8n Community Nodes Documentation](https://docs.n8n.io/integrations/community-nodes/)
 
 ## Local development
 
